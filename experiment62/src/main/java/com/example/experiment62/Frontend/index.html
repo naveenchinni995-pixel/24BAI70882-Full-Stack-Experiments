@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Experiment 6.2 | Query Optimization</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="page-bg"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="header-left">
+
+                <div class="experiment-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <div class="eyebrow">
+                        DATABASE PERFORMANCE LAB
+                    </div>
+
+                    <h1>
+                        Experiment 6.2
+                    </h1>
+
+                    <p>
+                        Caching & Query Optimization
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                API ACTIVE
+            </div>
+
+        </header>
+
+
+        <!-- ADD USER -->
+        <section class="card add-card">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="section-label">
+                        DATA MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Add New User
+                    </h2>
+
+                    <p>
+                        Create a user with associated address information.
+                    </p>
+                </div>
+
+                <div class="section-number">
+                    01
+                </div>
+
+            </div>
+
+
+            <form id="userForm">
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label for="uid">
+                            User ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="uid"
+                            placeholder="e.g. 24BAI70882"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="e.g. Naveen babu"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="e.g. Chandigarh"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="country">
+                            Country
+                        </label>
+
+                        <input
+                            type="text"
+                            id="country"
+                            placeholder="e.g. India"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        <span>＋</span>
+                        Add User
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- QUERY OPTIMIZATION -->
+        <section class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        PERFORMANCE ANALYSIS
+                    </span>
+
+                    <h2>
+                        Query Optimization Tests
+                    </h2>
+
+                    <p>
+                        Compare different database retrieval strategies.
+                    </p>
+
+                </div>
+
+                <div class="section-number">
+                    02
+                </div>
+
+            </div>
+
+
+            <div class="query-grid">
+
+                <button
+                    class="query-card normal"
+                    onclick="loadUsers('normal')"
+                >
+
+                    <div class="query-icon">
+                        ◉
+                    </div>
+
+                    <div class="query-info">
+
+                        <strong>
+                            Normal Query
+                        </strong>
+
+                        <span>
+                            Standard JPA retrieval
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="query-card optimized"
+                    onclick="loadUsers('optimized')"
+                >
+
+                    <div class="query-icon">
+                        ⚡
+                    </div>
+
+                    <div class="query-info">
+
+                        <strong>
+                            JOIN FETCH
+                        </strong>
+
+                        <span>
+                            Optimized relationship loading
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="query-card cached"
+                    onclick="loadUsers('cached')"
+                >
+
+                    <div class="query-icon">
+                        ◈
+                    </div>
+
+                    <div class="query-info">
+
+                        <strong>
+                            Cached Query
+                        </strong>
+
+                        <span>
+                            Retrieve data from cache
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="query-card native"
+                    onclick="loadUsers('native')"
+                >
+
+                    <div class="query-icon">
+                        #
+                    </div>
+
+                    <div class="query-info">
+
+                        <strong>
+                            Native SQL
+                        </strong>
+
+                        <span>
+                            Direct SQL execution
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SORTING -->
+        <section class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DATA ORGANIZATION
+                    </span>
+
+                    <h2>
+                        Sort & Refresh
+                    </h2>
+
+                    <p>
+                        Organize records using database-level sorting.
+                    </p>
+
+                </div>
+
+                <div class="section-number">
+                    03
+                </div>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <button
+                    class="secondary-btn"
+                    onclick="loadUsers('sort-id')"
+                >
+                    <span>↕</span>
+                    Sort by ID
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="loadUsers('sort-name')"
+                >
+                    <span>↕</span>
+                    Sort by Name
+                </button>
+
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadUsers('cached')"
+                >
+                    <span>↻</span>
+                    Refresh Data
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS -->
+        <div
+            id="status"
+            class="status-panel"
+        >
+            Ready — select a query operation to begin.
+        </div>
+
+
+        <!-- USER TABLE -->
+        <section class="card table-card">
+
+            <div class="section-header table-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        DATABASE RECORDS
+                    </span>
+
+                    <h2>
+                        User Directory
+                    </h2>
+
+                    <p>
+                        Live records retrieved from the H2 database.
+                    </p>
+
+                </div>
+
+                <div class="database-badge">
+                    H2 DATABASE
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>USER ID</th>
+                            <th>NAME</th>
+                            <th>CITY</th>
+                            <th>COUNTRY</th>
+                            <th>ACTION</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="userTableBody">
+                    </tbody>
+
+                </table>
+
+                <div class="empty-state">
+                    <span>◎</span>
+                    <p>No records loaded yet.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <span>
+                Experiment 6.2
+            </span>
+
+            <span class="footer-dot">
+                •
+            </span>
+
+            <span>
+                Caching & Query Optimization
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
