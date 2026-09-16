@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Experiment 5.1 | User Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-header">
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                E5
+            </div>
+
+            <div>
+                <h1>Experiment 5.1</h1>
+                <p>REST API User Management System</p>
+            </div>
+
+        </div>
+
+        <div class="api-indicator">
+            <span class="status-dot"></span>
+            API Online
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <p class="eyebrow">
+                    REST API • CRUD OPERATIONS
+                </p>
+
+                <h2>
+                    User Management Dashboard
+                </h2>
+
+                <p class="welcome-text">
+                    Manage user records through a Spring Boot REST API
+                    connected to an H2 database.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon users-icon">
+                    👥
+                </div>
+
+                <div>
+                    <span>Total Users</span>
+                    <strong id="totalUsers">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon api-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <span>API Status</span>
+                    <strong class="online-text">
+                        Online
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon database-icon">
+                    🗄️
+                </div>
+
+                <div>
+                    <span>Database</span>
+                    <strong>
+                        H2
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon crud-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Operations</span>
+                    <strong>
+                        CRUD
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= USER FORM ================= -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="section-label">
+                        USER MANAGEMENT
+                    </span>
+
+                    <h3 id="formTitle">
+                        Add New User
+                    </h3>
+
+                    <p>
+                        Enter the user's details below.
+                    </p>
+
+                </div>
+
+                <div class="form-badge">
+                    POST
+                </div>
+
+            </div>
+
+
+            <form id="userForm">
+
+                <div class="form-grid">
+
+
+                    <!-- UID -->
+
+                    <div class="input-group">
+
+                        <label for="uid">
+                            User ID
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                #
+                            </span>
+
+                            <input
+                                type="text"
+                                id="uid"
+                                placeholder="Enter unique UID"
+                                required
+                            >
+
+                        </div>
+
+                        <small>
+                            Unique identifier for the user
+                        </small>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="input-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                Aa
+                            </span>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter full name"
+                                required
+                            >
+
+                        </div>
+
+                        <small>
+                            Name must contain 2–50 characters
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="submitBtn"
+                    >
+                        <span>＋</span>
+                        Add User
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary hidden"
+                        id="cancelBtn"
+                    >
+                        Cancel Edit
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= USER RECORDS ================= -->
+
+        <section class="card records-card">
+
+            <div class="records-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DATABASE RECORDS
+                    </span>
+
+                    <h3>
+                        User Records
+                    </h3>
+
+                    <p>
+                        View and manage all registered users.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn btn-refresh"
+                    id="refreshBtn"
+                    type="button"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-container">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by UID or name..."
+                >
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                USER ID
+                            </th>
+
+                            <th>
+                                FULL NAME
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                            <th>
+                                ACTIONS
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="userTableBody">
+
+                    </tbody>
+
+                </table>
+
+
+                <!-- EMPTY STATE -->
+
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        👤
+                    </div>
+
+                    <h4>
+                        No users found
+                    </h4>
+
+                    <p>
+                        Add a user to start managing records.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <div>
+                <strong>Experiment 5.1</strong>
+                <span>•</span>
+                REST API User Management
+            </div>
+
+            <div>
+                Spring Boot • JPA • H2 Database
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ================= NOTIFICATION ================= -->
+
+    <div
+        id="notification"
+        class="notification"
+    >
+
+        <span id="notificationIcon">
+            ✓
+        </span>
+
+        <span id="notificationMessage">
+            Success
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
