@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Experiment 5.2 | User Administration</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         APPLICATION LAYOUT
+         ================================================== -->
+
+    <div class="app-layout">
+
+
+        <!-- ==================================================
+             SIDEBAR
+             ================================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- BRAND -->
+
+            <div class="sidebar-brand">
+
+                <div class="brand-mark">
+                    5.2
+                </div>
+
+                <div class="brand-text">
+
+                    <strong>
+                        User Admin
+                    </strong>
+
+                    <span>
+                        REST API Console
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-title">
+                    APPLICATION
+                </p>
+
+
+                <a
+                    href="#overview"
+                    class="nav-item active"
+                >
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    Overview
+
+                </a>
+
+
+                <a
+                    href="#users"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ♙
+                    </span>
+
+                    User Directory
+
+                </a>
+
+
+                <a
+                    href="#operations"
+                    class="nav-item"
+                >
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    Operations
+
+                </a>
+
+
+                <p class="nav-title system-title">
+                    SYSTEM
+                </p>
+
+
+                <div class="system-item">
+
+                    <span class="system-dot online-dot"></span>
+
+                    REST API
+
+                    <span class="system-value">
+                        ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span class="system-dot database-dot"></span>
+
+                    H2 Database
+
+                    <span class="system-value">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <div class="system-item">
+
+                    <span class="system-dot logging-dot"></span>
+
+                    MDC Logging
+
+                    <span class="system-value">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <div class="experiment-label">
+                    EXPERIMENT
+                </div>
+
+                <strong>
+                    Chandigarh University
+                </strong>
+
+                <span>
+                    Spring Boot REST API
+                </span>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+             ================================================== -->
+
+        <main class="main-content" id="overview">
+
+
+            <!-- ==================================================
+                 TOP BAR
+                 ================================================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <span class="breadcrumb">
+                        Experiment / 5.2
+                    </span>
+
+                    <h1>
+                        User Administration
+                    </h1>
+
+                </div>
+
+
+                <div class="topbar-status">
+
+                    <span class="live-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            System Operational
+                        </strong>
+
+                        <span>
+                            All services available
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ==================================================
+                 OVERVIEW STRIP
+                 ================================================== -->
+
+            <section class="overview-strip">
+
+
+                <div class="overview-intro">
+
+                    <span class="eyebrow">
+                        EXPERIMENT 5.2
+                    </span>
+
+                    <h2>
+                        Advanced User Management
+                    </h2>
+
+                    <p>
+                        CRUD operations with centralized exception
+                        handling, request logging and correlation tracing.
+                    </p>
+
+                </div>
+
+
+                <div class="overview-metrics">
+
+
+                    <div class="metric">
+
+                        <span>
+                            USERS
+                        </span>
+
+                        <strong id="totalUsers">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-divider"></div>
+
+
+                    <div class="metric">
+
+                        <span>
+                            API
+                        </span>
+
+                        <strong class="metric-online">
+                            200
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-divider"></div>
+
+
+                    <div class="metric">
+
+                        <span>
+                            TRACE
+                        </span>
+
+                        <strong>
+                            MDC
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 OPERATIONS CARD
+                 ================================================== -->
+
+            <section
+                class="panel"
+                id="operations"
+            >
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <div class="panel-title-row">
+
+                            <span class="panel-number">
+                                01
+                            </span>
+
+                            <span class="panel-label">
+                                USER OPERATIONS
+                            </span>
+
+                        </div>
+
+                        <h3 id="formTitle">
+                            Create User
+                        </h3>
+
+                        <p>
+                            Add a new user or modify an existing record.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="http-badge"
+                        id="methodBadge"
+                    >
+                        POST
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form id="userForm">
+
+
+                    <div class="form-row">
+
+
+                        <!-- UID -->
+
+                        <div class="form-field">
+
+                            <label for="uid">
+                                User ID
+                            </label>
+
+                            <div class="input-container">
+
+                                <span class="input-prefix">
+                                    ID
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="uid"
+                                    placeholder="E20454"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+                            <span class="field-help">
+                                Unique user identifier
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- NAME -->
+
+                        <div class="form-field">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <div class="input-container">
+
+                                <span class="input-prefix">
+                                    Aa
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter user's full name"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+                            <span class="field-help">
+                                Between 2 and 50 characters
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- FORM ACTIONS -->
+
+                    <div class="form-actions">
+
+
+                        <button
+                            type="submit"
+                            class="button button-primary"
+                            id="submitBtn"
+                        >
+                            <span>＋</span>
+                            Create User
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="button button-light"
+                            id="clearBtn"
+                        >
+                            Clear
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="button button-cancel hidden"
+                            id="cancelBtn"
+                        >
+                            Cancel Edit
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 USER DIRECTORY
+                 ================================================== -->
+
+            <section
+                class="panel"
+                id="users"
+            >
+
+
+                <div class="directory-header">
+
+
+                    <div>
+
+                        <div class="panel-title-row">
+
+                            <span class="panel-number">
+                                02
+                            </span>
+
+                            <span class="panel-label">
+                                DATABASE RECORDS
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            User Directory
+                        </h3>
+
+                        <p>
+                            Search and manage users stored in the H2 database.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="refresh-button"
+                        id="refreshBtn"
+                    >
+
+                        <span>
+                            ↻
+                        </span>
+
+                        Refresh
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- SEARCH TOOLBAR -->
+
+                <div class="directory-toolbar">
+
+
+                    <div class="search-container">
+
+                        <span class="search-symbol">
+                            ⌕
+                        </span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search users by ID or name..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="record-count">
+
+                        <span id="recordCount">
+                            0
+                        </span>
+
+                        records
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- TABLE -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    USER ID
+                                </th>
+
+                                <th>
+                                    USER NAME
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTIONS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="userTableBody">
+                        </tbody>
+
+                    </table>
+
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div
+                        class="empty-state"
+                        id="emptyState"
+                    >
+
+                        <div class="empty-symbol">
+                            ♙
+                        </div>
+
+                        <h4>
+                            No records available
+                        </h4>
+
+                        <p>
+                            Create a user to populate the directory.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 TECHNICAL INFORMATION
+                 ================================================== -->
+
+            <section class="technical-grid">
+
+
+                <div class="technical-card">
+
+                    <div class="technical-icon">
+                        API
+                    </div>
+
+                    <div>
+
+                        <span>
+                            REST ENDPOINT
+                        </span>
+
+                        <strong>
+                            /api/users
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="technical-card">
+
+                    <div class="technical-icon">
+                        DB
+                    </div>
+
+                    <div>
+
+                        <span>
+                            DATABASE
+                        </span>
+
+                        <strong>
+                            H2 / JPA
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="technical-card">
+
+                    <div class="technical-icon">
+                        ID
+                    </div>
+
+                    <div>
+
+                        <span>
+                            REQUEST TRACE
+                        </span>
+
+                        <strong>
+                            Correlation ID
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="technical-card">
+
+                    <div class="technical-icon">
+                        404
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ERROR HANDLING
+                        </span>
+
+                        <strong>
+                            Global Handler
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 FOOTER
+                 ================================================== -->
+
+            <footer>
+
+                <div>
+
+                    <strong>
+                        Experiment 5.2
+                    </strong>
+
+                    <span>
+                        Advanced REST API User Management
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    Spring Boot
+                    <span>•</span>
+                    JPA
+                    <span>•</span>
+                    H2
+                    <span>•</span>
+                    MDC
+
+                </div>
+
+            </footer>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         NOTIFICATION
+         ================================================== -->
+
+    <div
+        class="notification"
+        id="notification"
+    >
+
+        <div
+            class="notification-icon"
+            id="notificationIcon"
+        >
+            ✓
+        </div>
+
+        <div>
+
+            <strong id="notificationTitle">
+                Success
+            </strong>
+
+            <span id="notificationMessage">
+                Operation completed successfully.
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
