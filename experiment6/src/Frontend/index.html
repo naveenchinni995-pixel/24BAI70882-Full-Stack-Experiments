@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Experiment 6.1 | User Management
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="header">
+
+            <div class="header-badge">
+                SPRING BOOT • REST API
+            </div>
+
+            <h1>
+                Experiment 6.1
+            </h1>
+
+            <p>
+                User Management Dashboard
+            </p>
+
+            <div class="header-subtitle">
+                Pagination &amp; Sorting REST API
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             ADD USER
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="section-label">
+                        USER MANAGEMENT
+                    </div>
+
+                    <h2>
+                        Add New User
+                    </h2>
+
+                    <p class="section-description">
+                        Create a new user record in the system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="userForm">
+
+                <div class="form-row">
+
+
+                    <!-- UID -->
+
+                    <div class="form-group">
+
+                        <label for="uid">
+                            User ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="uid"
+                            placeholder="e.g. U001"
+                            autocomplete="off"
+                            required>
+
+                        <small class="input-help">
+                            Enter a unique user identifier.
+                        </small>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="e.g. Alice Johnson"
+                            autocomplete="off"
+                            required>
+
+                        <small class="input-help">
+                            Name must contain 2–50 characters.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-add">
+
+                    + Add User
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PAGINATION & SORTING
+        ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="section-label">
+                        DATA CONTROLS
+                    </div>
+
+                    <h2>
+                        Pagination &amp; Sorting
+                    </h2>
+
+                    <p class="section-description">
+                        Control how user records are displayed.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="controls">
+
+
+                <!-- PAGE SIZE -->
+
+                <div class="form-group">
+
+                    <label for="pageSize">
+                        Users Per Page
+                    </label>
+
+                    <select id="pageSize">
+
+                        <option value="3">
+                            3 users
+                        </option>
+
+                        <option
+                            value="5"
+                            selected>
+                            5 users
+                        </option>
+
+                        <option value="10">
+                            10 users
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SORT FIELD -->
+
+                <div class="form-group">
+
+                    <label for="sortField">
+                        Sort By
+                    </label>
+
+                    <select id="sortField">
+
+                        <option value="uid">
+                            User ID
+                        </option>
+
+                        <option value="name">
+                            Name
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SORT DIRECTION -->
+
+                <div class="form-group">
+
+                    <label for="sortDirection">
+                        Sort Order
+                    </label>
+
+                    <select id="sortDirection">
+
+                        <option value="asc">
+                            Ascending (A → Z)
+                        </option>
+
+                        <option value="desc">
+                            Descending (Z → A)
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn btn-apply"
+                onclick="loadUsers(0)">
+
+                Apply Filters
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             USERS / RESULTS
+        ================================================== -->
+
+        <section class="card">
+
+
+            <div class="table-top">
+
+
+                <div>
+
+                    <div class="section-label">
+                        DATABASE RECORDS
+                    </div>
+
+                    <h2>
+                        Users
+                    </h2>
+
+                    <p
+                        id="totalInfo">
+
+                        Total Users: 0
+
+                    </p>
+
+                </div>
+
+
+                <div class="table-actions">
+
+                    <span class="status-badge">
+
+                        <span class="status-dot"></span>
+
+                        API Active
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-refresh"
+                        onclick="loadUsers(currentPage)">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                User ID
+                            </th>
+
+                            <th>
+                                Full Name
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="userTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- PAGINATION -->
+
+            <div class="pagination">
+
+
+                <button
+                    id="previousButton"
+                    type="button"
+                    class="btn btn-page"
+                    onclick="previousPage()">
+
+                    ← Previous
+
+                </button>
+
+
+                <span id="pageInfo">
+
+                    Page 1
+
+                </span>
+
+
+                <button
+                    id="nextButton"
+                    type="button"
+                    class="btn btn-page"
+                    onclick="nextPage()">
+
+                    Next →
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MESSAGE
+        ================================================== -->
+
+        <div
+            id="message"
+            class="message">
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer">
+
+            <span>
+                Experiment 6.1
+            </span>
+
+            <span class="footer-separator">
+                •
+            </span>
+
+            <span>
+                Spring Boot + JPA + H2
+            </span>
+
+        </footer>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

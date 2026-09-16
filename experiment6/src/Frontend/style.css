@@ -1,0 +1,1074 @@
+/* =========================================================
+   EXPERIMENT 6.1 - PROFESSIONAL USER MANAGEMENT DASHBOARD
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --secondary: #7c3aed;
+
+    --success: #16a34a;
+    --success-dark: #15803d;
+
+    --danger: #dc2626;
+    --danger-dark: #b91c1c;
+
+    --dark: #111827;
+    --text: #374151;
+    --muted: #6b7280;
+
+    --background: #f4f7fb;
+    --card: #ffffff;
+    --border: #e5e7eb;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    padding: 40px 20px;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #eef2ff,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #f3e8ff,
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    margin-bottom: 28px;
+    padding: 42px 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px
+        rgba(79, 70, 229, 0.25);
+}
+
+
+/* Decorative circles */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    top: -130px;
+    right: -70px;
+}
+
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    bottom: -100px;
+    left: -60px;
+}
+
+
+.header h1 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 8px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+.header p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-size: 17px;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid
+        rgba(229, 231, 235, 0.9);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(15, 23, 42, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 32px
+        rgba(15, 23, 42, 0.09);
+}
+
+
+.card h2 {
+    margin: 0 0 22px;
+
+    color: var(--dark);
+
+    font-size: 21px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 22px;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+label {
+    margin-bottom: 8px;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+input,
+select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 9px;
+
+    background: #fafafa;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+
+input:hover,
+select:hover {
+    border-color: #c7d2fe;
+
+    background: white;
+}
+
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 70, 229, 0.12);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 11px 19px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: white;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/* Add */
+
+.btn-add {
+    margin-top: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--success),
+            var(--success-dark)
+        );
+
+    box-shadow:
+        0 5px 14px
+        rgba(22, 163, 74, 0.22);
+}
+
+
+/* Apply */
+
+.btn-apply {
+    margin-top: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 5px 14px
+        rgba(79, 70, 229, 0.22);
+}
+
+
+/* Refresh */
+
+.btn-refresh {
+    background: var(--dark);
+
+    box-shadow:
+        0 4px 10px
+        rgba(17, 24, 39, 0.15);
+}
+
+
+/* Pagination */
+
+.btn-page {
+    min-width: 115px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+
+
+.btn-page:disabled {
+    background: #d1d5db;
+
+    color: #6b7280;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* Delete */
+
+.btn-delete {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            var(--danger)
+        );
+
+    padding: 8px 14px;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 4px 10px
+        rgba(220, 38, 38, 0.15);
+}
+
+
+.btn-delete:hover {
+    background:
+        linear-gradient(
+            135deg,
+            var(--danger),
+            var(--danger-dark)
+        );
+}
+
+
+/* =========================================================
+   PAGINATION / SORTING CONTROLS
+========================================================= */
+
+.controls {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   USERS HEADER
+========================================================= */
+
+.table-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.table-top h2 {
+    margin-bottom: 5px;
+}
+
+
+#totalInfo {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-container {
+    overflow-x: auto;
+
+    margin-top: 8px;
+
+    border-radius: 10px;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+}
+
+
+th,
+td {
+    padding: 15px 16px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+
+th {
+    background: #f8fafc;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+td {
+    background: white;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+
+tbody tr {
+    transition:
+        background 0.15s ease;
+}
+
+
+tbody tr:hover td {
+    background: #f8faff;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* UID styling */
+
+td:first-child {
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pagination {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+#pageInfo {
+    min-width: 120px;
+
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    color: var(--dark);
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message {
+    min-height: 24px;
+
+    margin-top: 12px;
+
+    color: var(--primary);
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+td[colspan="3"] {
+    padding: 35px;
+
+    color: var(--muted);
+
+    text-align: center;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+
+    .header {
+        padding: 32px 20px;
+    }
+
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+
+    .table-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .btn-refresh {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .card {
+        padding: 20px;
+
+        border-radius: 13px;
+    }
+
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+
+    .header p {
+        font-size: 15px;
+    }
+
+
+    .pagination {
+        gap: 8px;
+    }
+
+
+    .btn-page {
+        min-width: 95px;
+
+        padding: 10px 12px;
+
+        font-size: 13px;
+    }
+
+
+    th,
+    td {
+        padding: 12px 10px;
+    }
+}
+/* =========================================================
+   PROFESSIONAL UI ENHANCEMENTS
+========================================================= */
+
+
+/* =========================================================
+   HEADER BADGE
+========================================================= */
+
+.header-badge {
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+
+    margin-bottom: 14px;
+    padding: 6px 12px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.25);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+
+.header-subtitle {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 13px;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 24px;
+}
+
+
+.section-heading h2 {
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+
+.section-label {
+    margin-bottom: 5px;
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+}
+
+
+.section-description {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INPUT HELP TEXT
+========================================================= */
+
+.input-help {
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE ACTIONS
+========================================================= */
+
+.table-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   API STATUS
+========================================================= */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #bbf7d0;
+
+    border-radius: 20px;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(34, 197, 94, 0.12);
+}
+
+
+/* =========================================================
+   TABLE ACTION BUTTON
+========================================================= */
+
+.table-actions .btn-refresh {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 0 20px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+.footer-separator {
+    color: #d1d5db;
+}
+
+
+/* =========================================================
+   BETTER CARD SECTIONS
+========================================================= */
+
+.card:first-of-type {
+    border-top:
+        3px solid
+        var(--success);
+}
+
+
+.card:nth-of-type(2) {
+    border-top:
+        3px solid
+        var(--primary);
+}
+
+
+.card:nth-of-type(3) {
+    border-top:
+        3px solid
+        var(--secondary);
+}
+
+
+/* =========================================================
+   BETTER BUTTON FOCUS
+========================================================= */
+
+.btn:focus-visible {
+    outline: 3px solid
+        rgba(79, 70, 229, 0.25);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLE HEADER IMPROVEMENT
+========================================================= */
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+
+th:last-child {
+    border-top-right-radius: 10px;
+}
+
+
+/* =========================================================
+   SMOOTH PAGE ENTRY
+========================================================= */
+
+.card {
+    animation:
+        cardEntry 0.45s ease both;
+}
+
+
+.card:nth-of-type(1) {
+    animation-delay: 0.05s;
+}
+
+
+.card:nth-of-type(2) {
+    animation-delay: 0.10s;
+}
+
+
+.card:nth-of-type(3) {
+    animation-delay: 0.15s;
+}
+
+
+@keyframes cardEntry {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   MOBILE HEADER / STATUS
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .table-actions {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+    .status-badge {
+        flex-shrink: 0;
+    }
+
+    .table-actions .btn-refresh {
+        width: auto;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .header-badge {
+        font-size: 10px;
+
+        letter-spacing: 0.8px;
+    }
+
+    .section-description {
+        font-size: 12px;
+    }
+
+    .table-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .status-badge {
+        justify-content: center;
+    }
+
+    .table-actions .btn-refresh {
+        width: 100%;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+    }
+}
