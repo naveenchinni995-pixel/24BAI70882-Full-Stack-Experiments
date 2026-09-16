@@ -1,0 +1,203 @@
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Body */
+
+body {
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+  min-height: 100vh;
+}
+
+/* Main Container */
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ==========================
+        LOGIN PAGE
+========================== */
+
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 420px;
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+}
+
+.login-card h1 {
+  color: #1d4ed8;
+  margin-bottom: 10px;
+}
+
+.login-card p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 2px solid #2563eb;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.login-card input:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.25);
+}
+
+/* Login Button */
+
+.login-card button {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
+}
+
+/* Error */
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Demo Credentials */
+
+.demo-user {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 5px solid #2563eb;
+  text-align: left;
+}
+
+.demo-user h4 {
+  margin-bottom: 10px;
+  color: #1d4ed8;
+}
+
+.demo-user p {
+  margin: 5px 0;
+}
+
+/* ==========================
+        DASHBOARD
+========================== */
+
+.dashboard-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-card {
+  width: 550px;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.25);
+  text-align: center;
+}
+
+.dashboard-card h1 {
+  color: #2563eb;
+  margin-bottom: 20px;
+}
+
+.dashboard-card h2 {
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.user-details {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.user-details p {
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+.token-status {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: .3s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+  .login-card,
+  .dashboard-card {
+    width: 92%;
+    padding: 25px;
+  }
+
+}
